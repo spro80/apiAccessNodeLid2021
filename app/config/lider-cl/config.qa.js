@@ -1,6 +1,6 @@
 module.exports = {
   msConfig: {
-    name: 'API products',
+    name: 'API products mongodb',
     port: 3000,
     country: 'CL',
     commerce: 'Lider',
@@ -8,5 +8,10 @@ module.exports = {
     requireToken: true
   },
   services: {
+  },
+  mongoDB: {
+    ip: 'localhost',
+    port: 27017,
+    db: 'admin'
   }
 };
