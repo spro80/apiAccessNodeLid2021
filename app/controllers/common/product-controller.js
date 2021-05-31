@@ -1,46 +1,51 @@
 // const config = require('../../config/index');
-
-// Models
 const Product = require('./../../models/product');
-const Discount = require('./../../models/discount');
-
-const moduleName = 'ProductController';
 
 class ProductController  {
 
-  getProducts(req, res) {
+  async getProducts(req, res) {
+
     try {
-      Product.find({}).exec((err, products) => {
+      await Product.find({}).exec((err, products) => {
 
         if(err) {
+
           return res.status(500).send({ 
-            message: 'error en el servidor'
+            statusCode: 500, message: 'err: internal error server', products: []
           })
+
         } else {
           if (products) {
+
             return res
               .status(200)
-              .json({ products })
-             
+              .json({ statusCode: 200, message: 'ok', products })
+
           } else {
-            return res.status(404).send({ 
-              message: 'data not found 404'
+
+            return res.status(404).send({
+              statusCode: 404, message: 'products not found', products: []
             })
+
           }
         }
       })
 
     } catch( e ) {
-      console.log("err:");
-      console.log(e);
-      return res.status(504).send({ 
-        message: 'error en el servidor'
+
+      return res.status(500).send({ 
+        statusCode: 500, message: e.message, products: []
       })
+
     }
   }
 
-  test(req, res){
-    res.status(200).send({ message: 'test api products' })
+  testProducts(req, res){
+
+    return res.status(200).send({ 
+      statusCode: 200, message: 'test product ok', discounts: []
+    })
+
   }
 
 }
