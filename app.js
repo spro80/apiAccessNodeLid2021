@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
-// ddos //denial of service
+const Ddos = require('ddos');
+
 const config = require('./app/config/index');
 
 const RouteV1 = require(`./app/routes/${config.envApp}/v1/route`); // eslint-disable-line
@@ -11,8 +12,8 @@ const app = express();
 
 app.set('trust proxy', true);
 
-//const ddos = new Ddos({ burst: 10, limit: 15 }, true);
-//app.use(ddos.express);
+const ddos = new Ddos({burst:10,limit:5,testmode:true,whitelist:['192.180.0.1', 'localhost']});
+// app.use(ddos.express);
 
 app.use(cors());
 app.use(bodyParser.json());
