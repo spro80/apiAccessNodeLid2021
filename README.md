@@ -4,6 +4,8 @@
 
 ## 1.- WORK WITH API IN LOCAL:
 
+### In case of error with:  npm i -> The solution is: npm install ----legacy-peer-deps
+
 ### In the root of this project, you must execute the follow instructions:
 apiAccessNodeLid2021$ sudo docker build -t nodejs-image-demo .
 
@@ -14,7 +16,7 @@ nodejs-image-demo            latest          9dba88a35d32   53 seconds ago   1.0
 
 
 ### Create container:
-apiAccessNodeLid2021$ docker run --name nodejs-image-demo-container -p 80:3000 -d nodejs-image-demo
+apiAccessNodeLid2021$ docker run --name nodejs-image-demo-container -p 3000:3000 -d nodejs-image-demo
 415e6d4044e6945caaf585c8f82d35c3b6e21ea7efe7da7dbac74463d38a880a
 
 
@@ -26,8 +28,8 @@ CONTAINER ID   IMAGE               COMMAND              CREATED         STATUS  
 415e6d4044e6   nodejs-image-demo   "npm run local-cl"   3 minutes ago   Up 3 minutes   3000/tcp, 0.0.0.0:80->3000/tcp, :::80->3000/tcp   nodejs-image-demo-container
 
 
-### Validate with curl that API is working in port 80:
-apiAccessNodeLid2021$ curl -i http://localhost:80/
+### Validate with curl that API is working in port 3000:
+apiAccessNodeLid2021$ curl -i http://localhost:3000/
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Access-Control-Allow-Origin: *
@@ -42,5 +44,30 @@ Keep-Alive: timeout=5
 Hello Docker
 
 
-### See logs in container:
+### In case of error, you can see logs in container:
 sudo docker logs idContainer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+###
+
+# TEST CONEXION TO MONGO WITHOUT AUTORIZACION:
+mongo --host localhost --port 27017 --authenticationDatabase admin
+
+
+### Stop mongo local: service mongod stop
