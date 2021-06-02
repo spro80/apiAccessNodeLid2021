@@ -3,10 +3,10 @@ const Product = require('./../../models/product');
 
 class ProductController  {
 
-  async getProducts(req, res) {
+  getProducts(req, res) {
 
     try {
-      await Product.find({}).exec((err, products) => {
+        Product.find({}).exec((err, products) => {
 
         if(err) {
 
@@ -19,7 +19,7 @@ class ProductController  {
 
             return res
               .status(200)
-              .json({ statusCode: 200, message: 'ok', products })
+              .send({ statusCode: 200, message: 'ok', products })
 
           } else {
 

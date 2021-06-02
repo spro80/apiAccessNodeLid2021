@@ -16,10 +16,14 @@ class DiscountController  {
         } else {
           if (discounts) {
 
+            /*return res
+              .status(200)
+              .json({ statusCode: 200, message: 'ok', discounts })*/
+             
             return res
               .status(200)
-              .json({ statusCode: 200, message: 'ok', discounts })
-             
+              .send({ statusCode: 200, message: 'ok', discounts })
+
           } else {
 
             return res.status(404).send({
