@@ -6,7 +6,7 @@ const method = 'DiscountMiddleware';
 async function DiscountMiddleware(req, res, next) {
   try {
     const controller = new DiscountController();
-    controller.getDiscounts(req,res);
+    await controller.getDiscounts(req,res);
     return;
   } catch (e) {
     console.log(e.message);
