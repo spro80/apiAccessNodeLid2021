@@ -6,7 +6,7 @@ const method = 'ProductMiddleware';
 async function ProductMiddleware(req, res, next) {
   try {
     const controller = new ProductController();
-    controller.getProducts(req,res);
+    await controller.getProducts(req,res);
     return;
   } catch (e) {
     console.log(e.message);
