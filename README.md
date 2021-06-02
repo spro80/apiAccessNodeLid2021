@@ -80,3 +80,9 @@ Hello Docker
 #### In case that you get some error, you can see logs in the container, with id container.
 #### For obtain the id container, you can execute the command "docker container ls" in the root of this project.
 sudo docker logs idContainer
+
+
+
+### 3.- UNIT TEST:
+#### For the execution of the unit test, you must execute the follows commands:
+npm run unit-test
