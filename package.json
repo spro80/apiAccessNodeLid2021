@@ -1,5 +1,5 @@
 {
-  "name": "API products LIDER",
+  "name": "apiproductslider",
   "version": "1.0.0",
   "description": "API that connect with MONGO DB, for obtain products and discounts.",
   "main": "bin/www",
